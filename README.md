@@ -10,9 +10,10 @@ Commands and examples:
 
 2. Clone repo to the directory
 
+	./gitcli.py -clone --repourl <SSH/HTTPS repo URL> --repodir <repo_name>
+	
 	./gitcli.py -clone --repourl https://github.com/h0st/test_git_repo.git --repodir test_repo2
-	./gitcli.py -clone --repourl git@github.com:h0st/test_git_repo.git --repodir test_repo
-
+	
 3. Create branch by name
 
 	./gitcli.py -createbranch --branchname develop
@@ -32,12 +33,3 @@ Commands and examples:
 7. Repo status info
 
 	./gitcli.py -status
-
-8. Execute command
-
-	./gitcli.py -exec --cmd "touch testfile"
-	
-
-
-
-P.S. Commands 3-7 must be run inside a Git repo directory!

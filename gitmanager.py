@@ -2,8 +2,6 @@
 #coding: utf-8
 
 import os
-import os.path
-
 
 class GitManager():
 
@@ -20,10 +18,8 @@ class GitManager():
         
         
     def check_git(self):
-        if os.path.exists(".git"):
-            return True
-        else:
-            return False
+        exists = os.path.exists(".git")
+        return True if exists else print("You are not in a Git repo directory, please open it first!")
 
 
     # clone repo
@@ -32,7 +28,7 @@ class GitManager():
             cmd = "git clone {} {}".format(repo_url, repo_dir)
             self.exec_cmd(cmd)
         else:
-            print("Repo URL or directory is not defined!")
+            print("Repo URL or local directory is not defined!")
     
     
     def create_branch(self, branch_name):
@@ -42,8 +38,6 @@ class GitManager():
                 self.exec_cmd(cmd)
             else:
                 print("Branch name is not defined!")
-        else:
-            print("You are not in a Git repo directory, please open it first!")
     
     
     def switch_to_branch(self, branch_name):
@@ -53,8 +47,6 @@ class GitManager():
                 self.exec_cmd(cmd)
             else:
                 print("Branch name is not defined!")
-        else:
-            print("You are not in a Git repo directory, please open it first!")
     
 
     # add all file and commit with message
@@ -64,9 +56,7 @@ class GitManager():
                 cmd = "git add . && git commit -am \"{}\"".format(commit_msg)
                 self.exec_cmd(cmd)
             else:
-                print("Commit message is not defined, please, write comment using --commitmsg!")
-        else:
-            print("You are not in a Git repo directory, please open it first!")
+                print("Commit message is not defined!")
         
         
     def push(self, branch_name):
@@ -76,13 +66,9 @@ class GitManager():
                 self.exec_cmd(cmd)
             else:
                 print("Branch name is not defined!")
-        else: 
-            print("You are not in a Git repo directory, please open it first!")
     
     
     def status(self):
         if self.check_git():
             cmd = "git status"
             self.exec_cmd(cmd)
-        else:
-            print("You are not in a Git repo directory, please open it first!")
